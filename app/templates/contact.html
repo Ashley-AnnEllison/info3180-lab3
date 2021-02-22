@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block main %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}" />
+<h1>Contact Form</h1>
+<hr>
+<p>Fill in this form to contact the site owners.</p>
+
+<form method="post" action="{{ url_for('contact') }}">
+    {{ form.csrf_token }}
+    <div class="formgroup">
+        {{ form.name.label }} <p>Please enter your full name</p> {{ form.name(class="formcontrol") }}
+    </div>
+    <div class="formgroup">
+        {{ form.email.label }} <p>Please enter your email address</p> {{ form.email(class="formcontrol", placeholder="ginger@blueberry.com") }}
+    </div>
+    <div class="formgroup">
+        {{ form.subject.label }} <p>Please enter the subject of your message</p> {{ form.subject(class="formcontrol") }}
+    </div>
+    <div class="formgroup">
+        {{ form.message.label }} <p>Please enter the message you would like to send</p> {{ form.message(class="messcontrol") }}
+    </div>
+    <button type="submit" class="butt">Send</button>
+</form>
+{% endblock %}
